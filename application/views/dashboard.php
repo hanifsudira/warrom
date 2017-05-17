@@ -81,7 +81,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-content">
-                                <p class="category">Ach MTD</p>
+                                <p class="category">ACH MTD</p>
                                 <h1 class="title">-</h1>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-content">
-                                <p class="category">Rank TR2</p>
+                                <p class="category">RANK TR2</p>
                                 <h1 class="title">-%</h1>
                             </div>
                         </div>
@@ -109,12 +109,12 @@
                                     <thead class="text-warning">
                                     <th>Witel</th>
                                     <th>PS 3P</th>
-                                    <th>PS Net</th>
-                                    <th>PS Tot</th>
-                                    <th>Churn</th>
+                                    <th>PS 2P</th>
+                                    <th>PS TOTAL</th>
+                                    <th>CHURN</th>
                                     <th>NAL HI</th>
                                     <th>NAL MTD</th>
-                                    <th>Ach MTD</th>
+                                    <th>ACH MTD</th>
                                     </thead>
                                     <tbody>
                                     <?php foreach ($clear as $reg){?>
@@ -136,13 +136,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-chart" data-background-color="green">
+                                <div class="ct-chart" id="chartBehaviour"></div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="title">Daily Sales</h4>
+                                <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <footer class="footer">
             <div class="container-fluid">
                 <p class="pull-left">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-                <p class="copyright pull-right">
+                <p class="pull-right">
                     &copy; <script>document.write(new Date().getFullYear())</script> <a href="h#">Hanif Sudira</a>, Made With Love
                 </p>
             </div>
