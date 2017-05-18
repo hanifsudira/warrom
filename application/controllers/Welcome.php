@@ -4,15 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
     public function __construct(){
         parent::__construct();
-        #$this->load->database();
-        #$this->load->model('dashboard');
+        $this->load->database();
+        $this->load->model('dashboard');
     }
 
 	public function index(){
         $data['page'] = 'War Room Dashboard';
         $this->load->view('header',$data);
 
-        //get all regional2 bulanan
+        //get all regional2 3p bulanan
 		$temp = exec("python script/getdata.py");
         $result = json_decode($temp, true);
         $regionalbulan = array();
@@ -21,7 +21,18 @@ class Welcome extends CI_Controller {
             array_pop($temp);
             array_push($regionalbulan,$temp);
         }
-        //end get all regional2 bulanan
+        //end get all regional2 3p bulanan
+
+        //get all regional2 2p bulanan
+        $temp = exec("python script/getdata2p.py");
+        $result = json_decode($temp, true);
+        $regionalbulan2p = array();
+        foreach ($result as $t){
+            $temp = explode("|",$t);
+            array_pop($temp);
+            array_push($regionalbulan2p,$temp);
+        }
+        //end get all regional2 2p bulanan
 
         //get all regional2 harian
         $temp = exec("python script/getdatadaily.py");
@@ -69,6 +80,14 @@ class Welcome extends CI_Controller {
             for ($i=0;$i<sizeof($regionalbulan);$i++){
                 if($regional==$regionalbulan[$i][2]){
                     $te = str_replace(",","",$regionalbulan[$i][16]);
+                    array_push($temp,(int)$te);
+                    break;
+                }
+            }
+
+            for ($i=0;$i<sizeof($regionalbulan2p);$i++){
+                if($regional==$regionalbulan2p[$i][2]){
+                    $te = str_replace(",","",$regionalbulan2p[$i][13]);
                     array_push($temp,(int)$te);
                     break;
                 }

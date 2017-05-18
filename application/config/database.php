@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.40.5.30',
-	'username' => 'root',
+	'hostname' => 'localhost',
+	'username' => 'telkom',
 	'password' => 'telkom',
-	'database' => 'wr_db',
+	'database' => 'dashboard',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +94,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+

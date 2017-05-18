@@ -128,7 +128,7 @@
                                             <td><?php echo $total?></td>
                                             <td><?php echo $reg[2]?></td>
                                             <td><?php echo $nal?></td>
-                                            <td><?php echo $reg[4]?></td>
+                                            <td><?php echo $reg[4]+$reg[5]?></td>
                                         </tr>
                                     <?php }?>
                                     </tbody>
