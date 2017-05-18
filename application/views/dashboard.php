@@ -9,21 +9,21 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="#">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
                 </li>
+<!--                <li>-->
+<!--                    <a href="user.html">-->
+<!--                        <i class="material-icons">person</i>-->
+<!--                        <p>User Profile</p>-->
+<!--                    </a>-->
+<!--                </li>-->
                 <li>
-                    <a href="user.html">
-                        <i class="material-icons">person</i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="table.html">
+                    <a href="<?php echo base_url()?>target">
                         <i class="material-icons">content_paste</i>
-                        <p>Input Data</p>
+                        <p>Target Data</p>
                     </a>
                 </li>
             </ul>
@@ -91,7 +91,7 @@
                         <div class="card card-stats">
                             <div class="card-content">
                                 <p class="category">RANK TR2</p>
-                                <h1 class="title">-%</h1>
+                                <h1 class="title">-</h1>
                             </div>
                         </div>
                     </div>
@@ -160,9 +160,9 @@
         <footer class="footer">
             <div class="container-fluid">
                 <p class="pull-left">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-                <p class="pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="h#">Hanif Sudira</a>, Made With Love
-                </p>
+<!--                <p class="pull-right">-->
+<!--                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="h#">Hanif Sudira</a>, Made With Love-->
+<!--                </p>-->
             </div>
         </footer>
     </div>

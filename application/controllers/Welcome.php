@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+    public function __construct(){
+        parent::__construct();
+        #$this->load->database();
+        #$this->load->model('dashboard');
+    }
 
 	public function index(){
         $data['page'] = 'War Room Dashboard';
@@ -42,7 +47,7 @@ class Welcome extends CI_Controller {
 
         //combine data
         $clearRegional = array();
-        $divre2 = ["BANTEN","BEKASI","BOGOR","JAKBAR","JAKPUS","JAKSEL","JAKTIM","TANGERANG"];
+        $divre2 = ["BANTEN","BEKASI","BOGOR","JAKBAR","JAKPUS","JAKSEL","JAKTIM","JAKUT","TANGERANG"];
         foreach ($divre2 as $regional){
             $temp = array();
             $temp[0] = $regional;
@@ -78,5 +83,13 @@ class Welcome extends CI_Controller {
         $this->load->view('dashboard',$data);
         $this->load->view('footer');
 
+    }
+
+    public function target(){
+	    $data['page'] = 'Witel Target';
+	    $this->load->view('header',$data);
+	    #$data['target'] = $this->dashboard->getTDTarget();
+	    $this->load->view('target');
+	    $this->load->view('footer');
     }
 }
