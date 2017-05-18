@@ -1,4 +1,4 @@
-import requests
+import urllib,urllib2
 import datetime
 import json
 from bs4 import BeautifulSoup
@@ -13,8 +13,10 @@ today = day+'/'+month+'/'+year
 
 url = 'http://mydashboard.telkom.co.id/ms2/report_progres_useetv8.php'
 values = {'start_date':init,'end_date':today,'p_kawasan':'DIVRE 2'}
-r = requests.post(url, data = values)
-soup = BeautifulSoup(r.content, 'html.parser')
+values = urllib.urlencode(values)
+r = urllib2.Request(url, values)
+r = urllib2.urlopen(r)
+soup = BeautifulSoup(r.read(), 'html.parser')
 
 datas = []
 for row in soup.find_all('tr'):
