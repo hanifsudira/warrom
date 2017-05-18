@@ -68,13 +68,13 @@ class Welcome extends CI_Controller {
 
             for ($i=0;$i<sizeof($regionalbulan);$i++){
                 if($regional==$regionalbulan[$i][2]){
-                    array_push($temp,(int)$regionalbulan[$i][16]);
+                    $te = str_replace(",","",$regionalbulan[$i][16]);
+                    array_push($temp,(int)$te);
                     break;
                 }
             }
             array_push($clearRegional,$temp);
         }
-
 
         //$data['regionalhari2p'] = $regionalhari2p;
         $data['clear'] = $clearRegional;
