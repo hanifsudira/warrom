@@ -85,7 +85,7 @@
                         <div class="card card-stats">
                             <div class="card-content">
                                 <p class="category">ACH MTD</p>
-                                <h1 class="title"><?php echo  number_format("$show3",2)."%";?></h1>
+                                <h1 class="title"><?php echo  number_format($show3,2)."%";?></h1>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                                                 <td><?php echo $clear[$i][6]?></td>
                                                 <td><?php echo $clear[$i][7]?></td>
                                                 <?php $shows = $clear[$i][8];?>
-                                                <td><?php echo number_format("$shows",2)."%";?></td>
+                                                <td><?php echo number_format($shows,2)."%";?></td>
                                                 <td><?php echo $i+1?></td>
                                             </tr>
                                         <?php } else { echo "<tr>"?>
@@ -147,7 +147,7 @@
                                             <td><?php echo $clear[$i][6]?></td>
                                             <td><?php echo $clear[$i][7]?></td>
                                             <?php $shows = $clear[$i][8];?>
-                                            <td><?php echo number_format("$shows",2)."%";?></td>
+                                            <td><?php echo number_format($shows,2)."%";?></td>
                                             <td><?php echo $i+1?></td>
                                         </tr>
 
