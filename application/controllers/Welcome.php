@@ -5,11 +5,13 @@ class Welcome extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->database();
+        $this->load->model('dashboard');
     }
 
 	public function index(){
         $data['page'] = 'War Room Dashboard';
         $this->load->view('header',$data);
+        $target = $this->dashboard->getTDTarget();
 
         //get all regional2 3p bulanan
 		$temp = exec("python script/getdata.py");
@@ -91,23 +93,56 @@ class Welcome extends CI_Controller {
                     break;
                 }
             }
+            for ($i=0;$i<sizeof($target);$i++){
+                if($regional==$target[$i]->witel){
+                    array_push($temp,$target[$i]->target);
+                    break;
+                }
+            }
             array_push($clearRegional,$temp);
         }
+        $clear = array();
+        foreach ($clearRegional as $t){
+            $temp = array();
+            $temp[0] = $t[0];
+            array_push($temp,$t[1]);
+            array_push($temp,$t[3]);
+            $total = $t[1]+$t[3];
+            array_push($temp,$total);
+            array_push($temp,$t[2]);
+            $nal = $total-$t[2];
+            array_push($temp,$nal);
+            $nalmtd = $t[4]+$t[5];
+            array_push($temp,$nalmtd);
+            array_push($temp,$t[6]);
+            $year = date('Y');
+            $month = date('n');
+            $day = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+            $today = date('j');
+            $div = ($today/$day)*$t[6];
+            $achmtd = ($nalmtd/$div)*100;
+            array_push($temp,$achmtd);
 
-        //$data['regionalhari2p'] = $regionalhari2p;
-        $data['clear'] = $clearRegional;
-        $data['regionalhari'] = $regionalhari;
-        $data['regionalbulan'] = $regionalbulan;
+            array_push($clear,$temp);
+        }
+
+        foreach ($clear as $array) {
+            $bysort[] = $array[8];
+        }
+        array_multisort($bysort,SORT_DESC,SORT_NUMERIC,$clear);
+        $content = file_get_contents("https://mdashboard.telkom.co.id/indihome/app.php/report/tgl_update");
+        $data['selesai'] = json_decode($content)->rows->SELESAI ;
+        $data['clear'] = $clear;
         $this->load->view('dashboard',$data);
         $this->load->view('footer');
-
     }
 
     public function target(){
+
 	    $data['page'] = 'Witel Target';
 	    $this->load->view('header',$data);
-	    #$data['target'] = $this->dashboard->getTDTarget();
-	    $this->load->view('target');
+	    $data['target'] = $this->dashboard->getAllTarget();
+	    $this->load->view('target',$data);
 	    $this->load->view('footer');
     }
 }

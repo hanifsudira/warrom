@@ -7,13 +7,14 @@ Class Dashboard extends CI_Model {
     }
 
     public function getAllTarget(){
-
+        $query = $this->db->query("SELECT * FROM target");
+        return $query ? $query->result() : "Gagal";
     }
 
     public function getTDTarget(){
         $mo = date('n');
         $ye = date('Y');
-        $query = $this->db->query("SELECT witel, target FROM wr_db.target where bulan= '$mo' and tahun='$ye'");
+        $query = $this->db->query("SELECT witel, target FROM target where bulan= '$mo' and tahun='$ye'");
         return $query ? $query->result() : "Gagal";
     }
 

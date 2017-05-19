@@ -7,9 +7,11 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="<?php echo base_url();?>assets/js/material-dashboard.js"></script>
 <script src="<?php echo base_url();?>assets/js/demo.js"></script>
+<script src="<?php echo base_url();?>assets/js/datatable.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         demo.initDashboardPageCharts();
+        $("#datatable").DataTable();
     });
 </script>
 </html>

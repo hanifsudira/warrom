@@ -1,3 +1,12 @@
+<?php for ($i=0;$i<sizeof($clear);$i++){
+        if($clear[$i][0] == "JAKBAR"){
+            $show1 = $clear[$i][5];
+            $show2 = $clear[$i][6];
+            $show3 = $clear[$i][8];
+            $show4 = $i+1;
+        }
+    }
+?>
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
         <div class="logo">
@@ -14,12 +23,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="user.html">-->
-<!--                        <i class="material-icons">person</i>-->
-<!--                        <p>User Profile</p>-->
-<!--                    </a>-->
-<!--                </li>-->
                 <li>
                     <a href="<?php echo base_url()?>target">
                         <i class="material-icons">content_paste</i>
@@ -66,7 +69,7 @@
                         <div class="card card-stats">
                             <div class="card-content">
                                 <p class="category">HI</p>
-                                <h1 class="title"><?php echo $regionalhari[3][16]?></h1>
+                                <h1 class="title"><?php echo $show1?></h1>
                             </div>
                         </div>
                     </div>
@@ -74,7 +77,7 @@
                         <div class="card card-stats">
                             <div class="card-content">
                                 <p class="category">MTD</p>
-                                <h1 class="title"><?php echo $regionalbulan[3][16]?></h1>
+                                <h1 class="title"><?php echo $show2?></h1>
                             </div>
                         </div>
                     </div>
@@ -82,7 +85,7 @@
                         <div class="card card-stats">
                             <div class="card-content">
                                 <p class="category">ACH MTD</p>
-                                <h1 class="title">-</h1>
+                                <h1 class="title"><?php echo  number_format("$show3",2)."%";?></h1>
                             </div>
                         </div>
                     </div>
@@ -91,7 +94,7 @@
                         <div class="card card-stats">
                             <div class="card-content">
                                 <p class="category">RANK TR2</p>
-                                <h1 class="title">-</h1>
+                                <h1 class="title"><?php echo $show4?></h1>
                             </div>
                         </div>
                     </div>
@@ -102,12 +105,12 @@
                         <div class="card">
                             <div class="card-header" data-background-color="green">
                                 <h4 class="title">Regional 2 </h4>
-                                <p class="category">Focus On Jakarta Barat</p>
+                                <p class="category">Last Update : <strong data-background-color="red"><?php echo $selesai?></strong></p>
                             </div>
                             <div class="card-content table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-warning">
-                                    <th>Witel</th>
+                                    <th>WITEL</th>
                                     <th>PS 3P</th>
                                     <th>PS 2P</th>
                                     <th>PS TOTAL</th>
@@ -116,45 +119,63 @@
                                     <th>NAL MTD</th>
                                     <th>TARGET</th>
                                     <th>ACH MTD</th>
+                                    <th>RANK</th>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($clear as $reg){?>
-                                        <?php $total = $reg[1]+$reg[3]?>
-                                        <?php $nal = $total-$reg[2]?>
-                                        <tr>
-                                            <td><?php echo $reg[0]?></td>
-                                            <td><?php echo $reg[1]?></td>
-                                            <td><?php echo $reg[3]?></td>
-                                            <td><?php echo $total?></td>
-                                            <td><?php echo $reg[2]?></td>
-                                            <td><?php echo $nal?></td>
-                                            <td><?php echo $reg[4]+$reg[5]?></td>
+                                    <?php for ($i=0;$i<sizeof($clear);$i++){?>
+                                        <?php if($clear[$i][0]=="JAKBAR") {?>
+                                        <?php echo "<tr bgcolor=\"yellow\">"?>
+                                                <td><?php echo $clear[$i][0]?></td>
+                                                <td><?php echo $clear[$i][1]?></td>
+                                                <td><?php echo $clear[$i][2]?></td>
+                                                <td><?php echo $clear[$i][3]?></td>
+                                                <td><?php echo $clear[$i][4]?></td>
+                                                <td><?php echo $clear[$i][5]?></td>
+                                                <td><?php echo $clear[$i][6]?></td>
+                                                <td><?php echo $clear[$i][7]?></td>
+                                                <?php $shows = $clear[$i][8];?>
+                                                <td><?php echo number_format("$shows",2)."%";?></td>
+                                                <td><?php echo $i+1?></td>
+                                            </tr>
+                                        <?php } else { echo "<tr>"?>
+                                            <td><?php echo $clear[$i][0]?></td>
+                                            <td><?php echo $clear[$i][1]?></td>
+                                            <td><?php echo $clear[$i][2]?></td>
+                                            <td><?php echo $clear[$i][3]?></td>
+                                            <td><?php echo $clear[$i][4]?></td>
+                                            <td><?php echo $clear[$i][5]?></td>
+                                            <td><?php echo $clear[$i][6]?></td>
+                                            <td><?php echo $clear[$i][7]?></td>
+                                            <?php $shows = $clear[$i][8];?>
+                                            <td><?php echo number_format("$shows",2)."%";?></td>
+                                            <td><?php echo $i+1?></td>
                                         </tr>
-                                    <?php }?>
+
+                                    <?php } }?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-chart" data-background-color="green">
-                                <div class="ct-chart" id="chartBehaviour"></div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="title">Daily Sales</h4>
-                                <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="row">-->
+<!--                    <div class="col-md-12">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-header card-chart" data-background-color="green">-->
+<!--                                <div class="ct-chart" id="chartBehaviour"></div>-->
+<!--                            </div>-->
+<!--                            <div class="card-content">-->
+<!--                                <h4 class="title">Daily Sales</h4>-->
+<!--                                <p class="category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55%  </span> increase in today sales.</p>-->
+<!--                            </div>-->
+<!--                            <div class="card-footer">-->
+<!--                                <div class="stats">-->
+<!--                                    <i class="material-icons">access_time</i> updated 4 minutes ago-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
 
