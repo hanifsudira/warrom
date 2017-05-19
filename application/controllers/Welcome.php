@@ -63,7 +63,7 @@ class Welcome extends CI_Controller {
         foreach ($divre2 as $regional){
             $temp = array();
             $temp[0] = $regional;
-            for ($i=0;$i<sizeof($regionalhari);$i++){
+            for ($i=0;$i<count($regionalhari);$i++){
                 if($regional==$regionalhari[$i][2]){
                     array_push($temp,(int)$regionalhari[$i][11]);
                     $tempChurn = (int)$regionalhari[$i][13]+(int)$regionalhari[$i][14]+(int)$regionalhari[$i][15];
@@ -71,14 +71,14 @@ class Welcome extends CI_Controller {
                     break;
                 }
             }
-            for ($i=0;$i<sizeof($regionalhari2p);$i++){
+            for ($i=0;$i<count($regionalhari2p);$i++){
                 if($regional==$regionalhari2p[$i][2]){
                     array_push($temp,(int)$regionalhari2p[$i][8]);
                     break;
                 }
             }
 
-            for ($i=0;$i<sizeof($regionalbulan);$i++){
+            for ($i=0;$i<count($regionalbulan);$i++){
                 if($regional==$regionalbulan[$i][2]){
                     $te = str_replace(",","",$regionalbulan[$i][16]);
                     array_push($temp,(int)$te);
@@ -86,14 +86,14 @@ class Welcome extends CI_Controller {
                 }
             }
 
-            for ($i=0;$i<sizeof($regionalbulan2p);$i++){
+            for ($i=0;$i<count($regionalbulan2p);$i++){
                 if($regional==$regionalbulan2p[$i][2]){
                     $te = str_replace(",","",$regionalbulan2p[$i][13]);
                     array_push($temp,(int)$te);
                     break;
                 }
             }
-            for ($i=0;$i<sizeof($target);$i++){
+            for ($i=0;$i<count($target);$i++){
                 if($regional==$target[$i]->witel){
                     array_push($temp,$target[$i]->target);
                     break;

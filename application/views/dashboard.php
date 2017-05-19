@@ -1,4 +1,4 @@
-<?php for ($i=0;$i<sizeof($clear);$i++){
+<?php for ($i=0;$i<count($clear);$i++){
         if($clear[$i][0] == "JAKBAR"){
             $show1 = $clear[$i][5];
             $show2 = $clear[$i][6];
@@ -122,7 +122,7 @@
                                     <th>RANK</th>
                                     </thead>
                                     <tbody>
-                                    <?php for ($i=0;$i<sizeof($clear);$i++){?>
+                                    <?php for ($i=0;$i<count($clear);$i++){?>
                                         <?php if($clear[$i][0]=="JAKBAR") {?>
                                         <?php echo "<tr bgcolor=\"yellow\">"?>
                                                 <td><?php echo $clear[$i][0]?></td>
