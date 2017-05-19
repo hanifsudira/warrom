@@ -121,7 +121,7 @@ class Welcome extends CI_Controller {
             $today = date('j');
             $div = ($today/$day)*$t[6];
             $achmtd = ($nalmtd/$div)*100;
-            array_push($temp,$achmtd);
+            array_push($temp,(float)$achmtd);
 
             array_push($clear,$temp);
         }
@@ -144,5 +144,12 @@ class Welcome extends CI_Controller {
 	    $data['target'] = $this->dashboard->getAllTarget();
 	    $this->load->view('target',$data);
 	    $this->load->view('footer');
+    }
+
+    public function reportPS(){
+        $data['page'] = 'Chart';
+        $this->load->view('header',$data);
+        //$this->load->view('report',$data);
+        $this->load->view('footer');
     }
 }
