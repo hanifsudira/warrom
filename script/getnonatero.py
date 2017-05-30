@@ -68,7 +68,7 @@ with requests.session() as s:
     internet = flattiket.count('INTERNET')
     iptv =  flattiket.count('IPTV')
 
-telepon2 = 0
+    telepon2 = 0
     internet2 = 0
     iptv2 = 0
     for data in tiket:
