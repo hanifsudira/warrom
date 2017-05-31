@@ -1,8 +1,9 @@
+#!/usr/bin/python
 import requests,datetime,MySQLdb,json
 from bs4 import BeautifulSoup
 from calendar import monthrange
 
-db = MySQLdb.connect(host="127.0.0.1", user="root", passwd="", db="dashboard")
+db = MySQLdb.connect(host="127.0.0.1", user="root", passwd="telkom", db="dashboard")
 
 now = datetime.datetime.now()
 day = str(now.day)
@@ -70,7 +71,7 @@ def getdaily3p():
         datas.append([ele for ele in cols if ele])
 
     for i, data in enumerate(datas):
-        if i > 16 and i <= 25:
+        if i > 15 and i <= 25:
             temp = ""
             for i in range(len(data)):
                 temp += str(data[i]) + "|"
@@ -107,15 +108,12 @@ if __name__ == '__main__':
     lastupdate = datetime.datetime.strptime(getlastupdate(), '%d-%b-%Y %H:%M:%S')
 
     divre2 = ["BANTEN", "BEKASI", "BOGOR", "JAKBAR", "JAKPUS", "JAKSEL", "JAKTIM", "JAKUT", "TANGERANG"]
-
+   
     re2 = []
     for regional in divre2:
         temp = []
         temp.append(regional)
-
-        if regional == 'JAKUT' and daily3p[8].split('|')[0]=='TOTAL':
-            temp.append(0)
-            temp.append(0)
+        status = 0
 
         for d3p in daily3p:
             d3p = d3p.split('|')
@@ -123,7 +121,12 @@ if __name__ == '__main__':
                 temp.append(d3p[11])
                 churn = int(d3p[13])+int(d3p[14])+int(d3p[15])
                 temp.append(churn)
+                status = 1
                 break
+        
+        if not status:
+        	temp.append(0)
+        	temp.append(0)
 
         for d2p in daily2p:
             d2p = d2p.split('|')

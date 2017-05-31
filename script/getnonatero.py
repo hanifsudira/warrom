@@ -1,7 +1,8 @@
+#!/usr/bin/python
 import requests, json, MySQLdb
 from bs4 import BeautifulSoup
 
-db = MySQLdb.connect(host="127.0.0.1", user="root", passwd="", db="dashboard")
+db = MySQLdb.connect(host="127.0.0.1", user="root", passwd="telkom", db="dashboard")
 cur = db.cursor()
 
 url = 'http://nonatero.telkom.co.id/det_ggn_open_langsung2.php?kw=02&wtl=12&dtl=null&cmdf=null&rk=null&loker_segmen=&prod=ALL&alpro=All&jenket=All&jenkel=ALL&jenggn=All&sel_lapul=ALL&sel_chann=ALL&sel_gam=ALL&sel_inetspeed=ALL&sel_urgen=ALL&slg=TOTAL&z=48'

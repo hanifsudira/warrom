@@ -11,7 +11,7 @@
                         <table id="datatable" class="table table-hover">
                             <thead class="text-warning">
                             <th>Witel</th>
-                            <th>Januri</th>
+                            <th>Januari</th>
                             <th>Februari</th>
                             <th>Maret</th>
                             <th>April</th>
